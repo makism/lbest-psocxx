@@ -1,4 +1,4 @@
-lbest-PSOCXX
+lbest-psocxx
 ============
 
-lbest-PSOCXX
+local best particle swarm optimization library; using boost template library.

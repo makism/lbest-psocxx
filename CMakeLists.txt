@@ -13,7 +13,6 @@ include_directories (${lbest-psocxx_SOURCE_DIR}/
 set(source_files
     src/helpers/Random.cpp
     src/Particle.cpp
-    src/Vector.cpp
     src/Topology.cpp
     src/Swarm.cpp
 )

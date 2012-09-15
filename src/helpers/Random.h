@@ -1,55 +1,57 @@
- #ifndef PSOCXX_HELPERS_RANDOM_HPP_
- #define PSOCXX_HELPERS_RANDOM_HPP_
+#ifndef PSOCXX_HELPERS_RANDOM_H
+#define PSOCXX_HELPERS_RANDOM_H
 
- #ifdef unix
- #   include <fstream>
- #else
- #   include <ctime>
- #endif
+#ifdef unix
+#   include <fstream>
+#else
+#   include <ctime>
+#endif
 
- namespace psocxx {
-     namespace Helpers {
-         // Based on
-         // http://www.mitchr.me/SS/exampleCode/boost/boostRandEx.cpp.html
-         // and http://sci.tuomastonteri.fi/programming/cplus/wrapper-to-boost-random
-         // !!! needs optimization !!!
-         class Random {
+#include "boost/random.hpp"
 
-         public:
-             static Random* Instance(float lo=0.0f, float hi=1.0f)
-             {
-                 if (mInstance==0)
-                     mInstance = new Random(lo, hi);
+namespace psocxx {
+namespace Helpers {
+// Based on
+// http://www.mitchr.me/SS/exampleCode/boost/boostRandEx.cpp.html
+// and http://sci.tuomastonteri.fi/programming/cplus/wrapper-to-boost-random
+// !!! needs optimization !!!
+class Random {
 
-                 return mInstance;
-             }
+public:
+    static Random* Instance(float lo=0.0f, float hi=1.0f)
+    {
+        if (mInstance==0)
+            mInstance = new Random(lo, hi);
 
-         public:
-             ~Random(void);
+        return mInstance;
+    }
 
-             float UniformUnit(void) const;
-             float Position(void) const;
-             float Velocity(void) const;
+public:
+    ~Random(void);
 
-         private:
-             Random(float lo, float hi);
-             uint64_t Seed() const;
+    float UniformUnit(void) const;
+    float Position(void) const;
+    float Velocity(void) const;
 
-         private:
-             static Random* mInstance;
+private:
+    Random(float lo, float hi);
+    uint64_t Seed() const;
 
-             boost::minstd_rand * baseGen;
+private:
+    static Random* mInstance;
 
-             boost::uniform_real<> * uniDblUnit;
-             boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > * uniDblGen;
+    boost::minstd_rand * baseGen;
 
-             boost::uniform_real<> * uniDblUnit_Pos;
-             boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > * uniDblGen_Pos;
+    boost::uniform_real<> * uniDblUnit;
+    boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > * uniDblGen;
 
-             boost::uniform_real<> * uniDblUnit_Vel;
-             boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > * uniDblGen_Vel;
-         };
-     }
- }
+    boost::uniform_real<> * uniDblUnit_Pos;
+    boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > * uniDblGen_Pos;
+
+    boost::uniform_real<> * uniDblUnit_Vel;
+    boost::variate_generator<boost::minstd_rand&, boost::uniform_real<> > * uniDblGen_Vel;
+};
+}
+}
 
 #endif

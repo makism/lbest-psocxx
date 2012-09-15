@@ -10,17 +10,16 @@
 #include <algorithm>
 #include <sstream>
 #include <stdio.h>
-#include <stdarg.h>
 #ifdef __linux__
 #   include <time.h>
 #else
 #   include <windows.h>
 #endif
 
-#include "boost/random.hpp"
+#include <boost/numeric/ublas/vector.hpp>
+typedef boost::numeric::ublas::vector<float> vecf;
 
 #include "src/helpers/Random.h"
-#include "src/Vector.h"
 #include "src/Particle.h"
 #include "src/Topology.h"
 #include "src/Swarm.h"

@@ -1,11 +1,13 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 
-
 namespace psocxx {
 namespace lbest {
 
+class Swarm;
+
 class Particle {
+    friend class Swarm;
 
 public:
     Particle();
@@ -17,6 +19,8 @@ public:
     vecf & velocity() const;
 
 private:
+    std::vector<Particle*> m_neighbors;
+
     vecf m_position;
     vecf m_bestPosition;
     vecf m_velocity;

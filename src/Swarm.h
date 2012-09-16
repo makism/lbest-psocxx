@@ -31,8 +31,10 @@ public:
     float bestFitness() const;
 
 private:
-    // Random generator function;
+    // Random generator functions;
     boost::function<float (void)> m_randomGenerator;
+    boost::function<float (void)> m_velocityGenerator;
+    boost::function<float (void)> m_positionGenerator;
 
     // Fitness evaluation function;
     boost::function<float (Particle&)> m_fitnessCallback;
@@ -41,7 +43,7 @@ private:
     unsigned int m_numParticles;
 
     //
-    std::vector<psocxx::lbest::Particle> m_particles;
+    std::vector<Particle> m_particles;
 
     // Upper and lower boundaries;
     float m_boundLower;
@@ -49,6 +51,9 @@ private:
 
     //
     unsigned int m_dimensions;
+
+    //
+    Topology::TopologyType m_topologyType;
 
     // Parameters;
     float m_omega;

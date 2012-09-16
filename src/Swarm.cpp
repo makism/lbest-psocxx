@@ -41,8 +41,14 @@ void Swarm::setRandomGenerator(boost::function<float (void)> callback)
 
 void Swarm::step()
 {
-    Particle p;
-    m_fitnessCallback(p);
+    BOOST_FOREACH(Particle & particle, m_particles) {
+        particle.m_fitness = m_fitnessCallback(particle);
+    }
+}
+
+const std::vector<Particle> & Swarm::particles()
+{
+    return m_particles;
 }
 
 }

@@ -16,8 +16,12 @@
 #   include <windows.h>
 #endif
 
+#include <boost/foreach.hpp>
 #include <boost/numeric/ublas/vector.hpp>
 typedef boost::numeric::ublas::vector<float> vecf;
+typedef boost::numeric::ublas::zero_vector<float> zero_vecf;
+
+std::ostream & operator<< (std::ostream & os, const vecf & vector);
 
 #include "src/helpers/Random.h"
 #include "src/Particle.h"

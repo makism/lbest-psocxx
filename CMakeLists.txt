@@ -11,6 +11,7 @@ include_directories (${lbest-psocxx_SOURCE_DIR}/
                         ${lbest-psocxx_SOURCE_DIR}/src/)
 
 set(source_files
+    src/helpers/print_vec.cpp
     src/helpers/Random.cpp
     src/Particle.cpp
     src/Topology.cpp
